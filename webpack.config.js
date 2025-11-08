@@ -6,16 +6,17 @@ import Dotenv from 'dotenv-webpack';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-module.exports = {
+export default {
     entry: './src/server.js',
     target: 'node',
+    mode: 'production',
     externals: [nodeExternals()],
     output: {
         path: resolve(__dirname, 'dist'),
-        filename: 'server.js'
+        filename: 'bundle.cjs',
+        libraryTarget: 'commonjs2'
     },
     plugins: [
         new Dotenv()
     ],
-    mode: 'production'
 };
